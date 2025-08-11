@@ -59,15 +59,60 @@ while True:
 
     elif choice == "2":
         print(f"performing choice 2 operation")
+        student_id = input("enter student id to modify: ")
+        if student_id in students:
+            new_name = input("enter new name:").strip().title()
+            students[student_id]["name"] = new_name
+            print("student updated sucessfully")
+        else:
+            print("student id not found")
+
     elif choice == "3":
         print(f"performing choice 3 operation")
+        student_id = input("enter student ID to Delete:")
+        removed = students.pop(student_id)
+        if removed:
+            print("student deleted successfully")
+        else:
+            print("student ID not found")
+
     elif choice == "4":
         print(f"performing choice 4 operation")
+        if not students:
+            print("no students found")
+        else:
+            print("all students information")
+            for sid,data in students.items():
+                name = data["name"]
+                scores = data["scores"]
+                if scores:
+                    avg = sum(scores)/len(scores)
+                else:
+                    avg = 0
+
+                if scores:
+                    top_score = max(scores)
+                else:
+                    top_score = 0
+                    skills = data["skills"]
+                    print(f"ID: {sid}")
+                    print(f"name: {name}")
+                    print(f"scores: {scores}")
+                    print(f"average score: {avg}")
+                    print(f"top score: {top_score}")
+                    print(f"skills: {skills}")
+                    print(f"skills count:{len (skills)}")
+
     elif choice == "5":
         print(f"performing choice 5 operation")
+        print("="*50)
+        print("contact admin for further help")
+        print(f"mobile number {ADMIN_INFO[1]}")
+        print(f"email id {ADMIN_INFO[2]} ")
+        print("="*50)
         break
-    else:
-        print(f"Ivalid choice select only (1-5) ")
+else:
+    print(f"Ivalid choice select only (1-5) ")
 
     
 
